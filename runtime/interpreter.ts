@@ -12,6 +12,7 @@ switch (astNode.kind) {
     } as NumberVal;
 
   default:
+    console.log(astNode);
     return { value: "null", type: "null" } as "NullVal";
 }
   
