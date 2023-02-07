@@ -1,5 +1,5 @@
 compile = "./.config/build.sh"
-run = "node --enable-source-maps .build/index.js"
+run = "deno run -A main.ts"
 entrypoint = "index.ts"
 hidden = [".build", ".config"]
 

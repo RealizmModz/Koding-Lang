@@ -1,7 +1,7 @@
 export enum TokenType {
+  Null,
   Number,
   Identifier,
-  Null,
   Let,
   BinaryOperator,
   Equals,
@@ -12,12 +12,12 @@ export enum TokenType {
 
 const KEYWORDS: Record<string, TokenType> = {
   let: TokenType.Let,
-  null: TokenType.Null
+  null: TokenType.Null,
 };
 
 export interface Token {
-  value: string; 
-  type: TokenType; 
+  value: string;
+  type: TokenType;
 }
 
 function token(value = "", type: TokenType): Token {
@@ -32,13 +32,11 @@ function isskippable(str: string) {
   return str == " " || str == "\n" || str == "\t";
 }
 
-
 function isint(str: string) {
   const c = str.charCodeAt(0);
   const bounds = ["0".charCodeAt(0), "9".charCodeAt(0)];
   return c >= bounds[0] && c <= bounds[1];
 }
-
 
 export function tokenize(sourceCode: string): Token[] {
   const tokens = new Array<Token>();

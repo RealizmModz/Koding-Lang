@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../main.ts"],
+  "sourcesContent": ["import Parser from \"./frontend/parser.ts\";\nimport Environment from \"./runtime/environment.ts\";\nimport { evaluate } from \"./runtime/interpreter.ts\";\nrepl();\n\nfunction repl() {\n\tconst parser = new Parser();\n\tconst env = new Environment();\n\tenv.declareVar(\"x\", { value: 100, type: \"number\" } as NumberVal);\n\tconsole.log(\"\\nRepl v0.1\");\n\n\twhile (true) {\n\t\tconst input = prompt(\"> \");\n\t\tif (!input || input.includes(\"exit\")) {\n\t\t\tDeno.exit(1);\n\t\t}\n\n\t\tconst program = parser.produceAST(input);\n\n\t\tconst result = evaluate(program, env);\n\t\tconsole.log(result);\n\t}\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA,oBAAmB;AACnB,yBAAwB;AACxB,yBAAyB;AACzB,KAAK;AAEL,SAAS,OAAO;AACf,QAAM,SAAS,IAAI,cAAAA,QAAO;AAC1B,QAAM,MAAM,IAAI,mBAAAC,QAAY;AAC5B,MAAI,WAAW,KAAK,EAAE,OAAO,KAAK,MAAM,SAAS,CAAc;AAC/D,UAAQ,IAAI,aAAa;AAEzB,SAAO,MAAM;AACZ,UAAM,QAAQ,OAAO,IAAI;AACzB,QAAI,CAAC,SAAS,MAAM,SAAS,MAAM,GAAG;AACrC,WAAK,KAAK,CAAC;AAAA,IACZ;AAEA,UAAM,UAAU,OAAO,WAAW,KAAK;AAEvC,UAAM,aAAS,6BAAS,SAAS,GAAG;AACpC,YAAQ,IAAI,MAAM;AAAA,EACnB;AACD;",
+  "names": ["Parser", "Environment"]
+}

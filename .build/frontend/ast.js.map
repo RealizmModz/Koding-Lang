@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../frontend/ast.ts"],
+  "sourcesContent": ["export type NodeType =\n  | \"Program\"\n  | \"NumericLiteral\"\n  | \"NullLiteral\"\n  | \"Identifier\"\n  | \"BinaryExpr\";\n\nexport interface Stmt {\n  kind: NodeType;\n}\n\nexport interface Program extends Stmt {\n  kind: \"Program\";\n  body: Stmt[];\n}\n\nexport interface Expr extends Stmt {}\n\nexport interface BinaryExpr extends Expr {\n  kind: \"BinaryExpr\";\n  left: Expr;\n  right: Expr;\n  operator: string;\n}\n\nexport interface Identifier extends Expr {\n  kind: \"Identifier\";\n  symbol: string;\n}\n\nexport interface NumericLiteral extends Expr {\n  kind: \"NumericLiteral\";\n  value: number;\n}\n\nexport interface NullLiteral extends Expr {\n  kind: \"NullLiteral\";\n  value: \"null\";\n}"],
+  "mappings": ";;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}

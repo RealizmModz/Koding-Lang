@@ -1,21 +1,24 @@
 import Parser from "./frontend/parser.ts";
+import Environment from "./runtime/environment.ts";
 import { evaluate } from "./runtime/interpreter.ts";
+import { MK_NUMBER } from "./runtime/values.ts";
 repl();
 
-function repl () {
-  const parser = new Parser();
-  console.log("\nRepl v0.1");
-  while (true) {
+function repl() {
+	const parser = new Parser();
+	const env = new Environment();
+	env.declareVar("x", MK_NUMBER(100) as NumberVal);
+	console.log("\nRepl v0.1");
 
-    const input = prompt("> ");
+	while (true) {
+		const input = prompt("> ");
+		if (!input || input.includes("exit")) {
+			Deno.exit(1);
+		}
 
-    if( !input || input.includes("exit")) {
-      Deno.exit(1);
-    }
+		const program = parser.produceAST(input);
 
-    const program = parser.produceAST(input);
-    console.log(program);
-
-    const result = evaluate(program);
-  }
+		const result = evaluate(program, env);
+		console.log(result);
+	}
 }

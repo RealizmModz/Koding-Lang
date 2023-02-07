@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../runtime/values.ts"],
+  "sourcesContent": ["export type ValueType = \"null\" | \"number\";\n\nexport interface RuntimeVal {\n  type: ValueType;\n}\n\nexport interface NullVal extends RuntimeVal {\n  type: \"null\";\n  value: \"null\";\n}\n\nexport interface NumberVal extends RuntimeVal {\n  type: \"number\";\n  value: number;\n}"],
+  "mappings": ";;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}
